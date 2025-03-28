@@ -1,6 +1,17 @@
 SBEs solver 1.0
 This is a script to solve simple, 1dimension, 2bands semiconduction bloch equations omiting Coulomb interaction, dephasing of occupation, background polarization, Berry phase.
-
+1D-2bands-semiconductor bloch equations:
+iℏ ∂/∂t p_k=(ε_k^e+ε_k^h-i ℏ/T_2 ) p_k-(1-f_k^e-f_k^h ) Ω_k (t)+ieE(t)⋅∇_k p_k
+ℏ ∂/∂t f_k^e(h) =-2 Im[Ω_k (t) p_k^* ]+eE(t)∙∇_k f_k^e(h) 
+where p_k is micropolarization of k wave vector，ε_k^e is single particle energy of k wave vector on conduction band(e)，ε_k^h is single particle energy of k wave vector on valence band(h)，T2 is dephasing time，f_k^(e(h)) is carrier occupation on e(h)，Ω_k (t)=d_k E(t) is rabi frequency，and d_k is transition dipole moment，E(t) is electric field，ℏ,e is reduced planck constant amd eletmentary charge, respectively.
+P(t)=∑_k[d_k p_k (t)+c.c.] 
+P(t) is macroplolarization。
+Interband current: J_er (t)=dP(t)/dt
+Intraband current: J_ra (t)=e/ℏ ∑_k〖(∇_k E_k^e ) f_k^e 〗-e/ℏ ∑_k〖(∇_k E_k^h ) f_k^h 〗
+Total current: J_tot (t)=J_ra (t)+J_er (t)
+The above "E_k^(e(h))" expresses the band energy of e(h), which equals to single particle energy：ε_k^e=E_k^e,ε_k^e=〖-1⋅E〗_k^h.
+Eventually, you could obtain the HHG with fouriel transform:
+(I_HHG (ω)∝|FT{J_tot (t)} |^2
 ===========================================
 How to use this script?
 a. Prepare the file "transition dipole moment.txt", which is corresponding to transition dipole moment of k grids.
